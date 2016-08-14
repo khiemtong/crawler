@@ -23,12 +23,12 @@ def worker_crawl(q, search):
     # pdb.set_trace()
     while not q.empty():
         site = q.get()
-        print "Getting ready to crawl: " + site
+        print("Getting ready to crawl: " + site)
         crawler = Crawler(CrawlerCache('crawler.db'), search_term=search)
-        print "Successfully created crawler for site: " + site + " with object: " + str(crawler)
+        print("Successfully created crawler for site: " + site + " with object: " + str(crawler))
         root_re = re.compile('^/$').match
         crawler.crawl(site, no_cache=root_re)
-        print "Finished crawling site: ", site
+        print("Finished crawling site: ", site)
         q.task_done()
 
 
